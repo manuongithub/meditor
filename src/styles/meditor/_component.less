@@ -1,0 +1,100 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Component
+// -------------------------------------------------
+.meditor-component {
+    position: relative;
+    z-index: 1;
+    transition: padding-bottom @animation-duration;
+    
+    &:before {
+        position: absolute;
+        top: -@component-outline-with;
+        right: -@component-outline-with;
+        left: -@component-outline-with;
+        bottom: -@component-outline-with;
+        content: " ";
+        border: @component-outline-with solid transparent;
+        z-index: -1;
+    }
+    
+    .meditor-toolbar {
+        top: 0;
+        left: 0;
+        background-color: @component-toolbar-bg;
+        border-bottom-right-radius: @border-radius;
+        
+        > a {
+            color: @component-toolbar-button-color;
+            float: left;
+            
+            &:hover {
+                background-color: @component-toolbar-button-bg-hover;
+            }
+        }
+    }
+    
+    .meditor-toolbar-bottom-component {
+        bottom: unit(-@toolbar-item-size - 1, px);
+    }
+    
+    .meditor-component-content {
+        .clearfix();
+        position: relative;
+        z-index: 2;
+    }
+    
+    &:hover {
+        &:before {
+            border-color: @component-outline-color-hover;
+        }
+    }
+    
+    &.showed-meditor-toolbar {
+        &:before {
+            border-color: @component-outline-color-selected;
+        }
+    }
+    
+    &:hover,
+    &.showed-meditor-toolbar {
+        z-index: 2;
+
+        &:before {
+            display: block;
+        }
+        
+        .meditor-toolbar {
+            display: block;
+        }
+
+    }
+    
+    &.showed-meditor-toolbar {
+        .meditor-component-content {
+            outline: none !important;
+        }
+
+        .meditor-toolbar-bottom-component {
+            display: none;
+        }
+
+        .meditor-toolbar-component {
+            display: none;
+        }
+    }
+
+    &.showed-meditor-toolbar:hover {
+        .meditor-toolbar-bottom-component {
+            display: block;
+        }
+
+        .meditor-toolbar-component {
+            display: block;
+        }
+    }
+}

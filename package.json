@@ -1,0 +1,50 @@
+{
+    "name": "meditor",
+    "title": "MEditor",
+    "libraryName": "MEditor",
+    "version": "2.0.0",
+    "description": "MEditor is a jQuery plugin which provides an HTML Email builder with drag and drop snippets",
+    "scripts": {
+        "build": "webpack --prod",
+        "dev": "webpack --progress --color --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/manuongithub/MEditor"
+    },
+    "keywords": [
+        "editor",
+        "meditor",
+        "content editor"
+    ],
+    "author": "Manu (http://manu.ws)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/manuongithub/MEditor/issues"
+    },
+    "homepage": "https://github.com/manuongithub/MEditor#readme",
+    "devDependencies": {
+        "@babel/core": "^7.4.5",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/plugin-proposal-export-default-from": "^7.2.0",
+        "@babel/preset-env": "^7.4.5",
+        "babel-loader": "^8.0.6",
+        "css-loader": "^3.0.0",
+        "file-loader": "^4.0.0",
+        "jquery.fullscreen": "^0.6.0",
+        "less": "^3.9.0",
+        "less-loader": "^5.0.0",
+        "mini-css-extract-plugin": "^0.7.0",
+        "node-sass": "^4.12.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "sass-loader": "^7.1.0",
+        "string-replace-loader": "^2.1.1",
+        "webpack": "^4.33.0",
+        "webpack-cli": "^3.3.4",
+        "wrapper-webpack-plugin": "^2.1.0",
+        "yargs": "^13.2.4"
+    },
+    "dependencies": {
+        "spectrum-colorpicker": "^1.8.0"
+    }
+}

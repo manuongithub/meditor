@@ -1,0 +1,62 @@
+.meditor-text() {
+    font: 14px/1.42857143 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.meditor-scrollbar() {
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    &::-webkit-scrollbar-button {
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #eee;
+        -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    &::-webkit-scrollbar-track-piece {
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #ddd;
+        -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+        
+        &:hover {
+            background: #cdcdcd;
+        }
+        
+        &:active {
+            background: #cdcdcd;
+        }
+    }
+    
+    &::-webkit-scrollbar-corner {
+    }
+    
+    &::-webkit-resizer {
+    }
+}
+
+// Clearfix
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+    &:before,
+    &:after {
+        display: table; // 2
+        content: " "; // 1
+    }
+    &:after {
+        clear: both;
+    }
+}
+

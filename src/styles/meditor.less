@@ -1,0 +1,42 @@
+// Body
+// -------------------------------------------------
+body {
+    &.opened-meditor-sidebar {
+        .meditor-content-area {
+            margin-right: 260px;
+        }
+        
+        .meditor-sidebar {
+            right: 0;
+        }
+    }
+    
+    &.opened-modal {
+        overflow: hidden;
+    }
+    
+    &.previewing {
+        .meditor-content-areas-wrapper {
+            display: none;
+        }
+        
+        .meditor-preview-area {
+            display: block;
+        }
+    }
+}
+
+@import "meditor/_ui";
+@import "meditor/_wrapper";
+@import "meditor/_topbar";
+@import "meditor/_sidebar";
+@import "meditor/_preview";
+@import "meditor/_content-area";
+@import "meditor/_modal";
+@import "meditor/_snippet";
+@import "meditor/_button";
+@import "meditor/_toolbar";
+@import "meditor/_container";
+@import "meditor/_component";
+@import "meditor/_iframe";
+@import "meditor/_utilities";

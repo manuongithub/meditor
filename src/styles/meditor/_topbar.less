@@ -1,0 +1,70 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Topbar
+// -------------------------------------------------
+.meditor-topbar {
+    .clearfix();
+    .meditor-text();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: @topbar-bg;
+}
+
+.meditor-topbar-title {
+    color: @topbar-title-color;
+    line-height: @topbar-height;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 15px;
+}
+
+.meditor-topbar-left,
+.meditor-topbar-center,
+.meditor-topbar-right {
+    float: left;
+    height: @topbar-height;
+    word-spacing: -1em;
+    
+    > * {
+        word-spacing: normal;
+        display: inline-block;
+    }
+}
+
+.meditor-topbar-left,
+.meditor-topbar-right {
+    width: 33%;
+}
+
+.meditor-topbar-right {
+    text-align: right;
+}
+
+.meditor-topbar-center {
+    width: 34%;
+    text-align: center;
+}
+
+.meditor-topbar-btn {
+    height: @topbar-height;
+    line-height: @topbar-height;
+    color: @topbar-btn-color !important;
+    text-decoration: none;
+    width: @topbar-height;
+    text-align: center;
+    
+    &:hover,
+    &.active {
+        background: @topbar-btn-hover;
+    }
+    
+    i {
+        font-size: @topbar-btn-icon-size;
+    }
+}

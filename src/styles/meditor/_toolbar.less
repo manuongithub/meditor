@@ -1,0 +1,67 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Toolbar
+// -------------------------------------------------
+.meditor-toolbar-content-area,
+.meditor-toolbar-container-content {
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.meditor-toolbar-container-content {
+    display: block;
+    
+    .meditor-container-content-inner.has-component + & {
+        display: none;
+    }
+}
+
+.meditor-toolbar {
+    position: absolute;
+    display: none;
+    z-index: 5;
+    .meditor-text();
+    overflow: hidden;
+    
+    > a {
+        font-size: @toolbar-item-font-size;
+        width: @toolbar-item-size;
+        height: @toolbar-item-size;
+        display: block;
+        text-align: center;
+        line-height: @toolbar-item-size;
+        transition: all @animation-duration;
+        
+        .fa {
+            line-height: inherit;
+        }
+    }
+    
+    .btn-container-move {
+        cursor: n-resize;
+    }
+    
+    .btn-component-move {
+        cursor: move;
+    }
+}
+
+.meditor-toolbar.meditor-toolbar-bottom {
+    top: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    background-color: @component-toolbar-bg;
+    border-radius: 0 0 @border-radius @border-radius;
+    
+    > a {
+        line-height: unit(@toolbar-item-size + 1, px);
+        width: 125px;
+        text-decoration: none;
+    }
+}

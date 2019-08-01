@@ -1,0 +1,88 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Container
+// -------------------------------------------------
+.meditor-container {
+    position: relative;
+    
+    > .meditor-container-inner {
+        position: relative;
+        
+        &:before {
+            position: absolute;
+            top: unit(-@container-outline-with + @container-outline-offset, px);
+            right: unit(-@container-outline-with + @container-outline-offset, px);
+            left: unit(-@container-outline-with + @container-outline-offset, px);
+            bottom: unit(-@container-outline-with + @container-outline-offset, px);
+            border: @container-outline-with transparent;
+            content: " ";
+            display: block;
+            z-index: -1;
+        }
+    }
+    
+    > .meditor-toolbar {
+        top: unit(-@container-outline-with + @container-outline-offset, px);
+        left: unit(-@toolbar-item-size + @container-outline-offset, px);
+        border-radius: @border-radius 0 0 @border-radius;
+        
+        > a {
+            background: @container-toolbar-button-bg;
+            color: @container-toolbar-button-color;
+            
+            &:hover {
+                background: @container-toolbar-button-bg-hover;
+            }
+        }
+    }
+    
+    > .meditor-toolbar-bottom-sub-container {
+        bottom: unit(-@toolbar-item-size - 3, px);
+    }
+    
+    &:hover {
+        > .meditor-container-inner {
+            &:before {
+                border-color: @container-outline-color-hover;
+            }
+        }
+    }
+    
+    &.showed-meditor-toolbar {
+        > .meditor-container-inner {
+            &:before {
+                border-color: @container-outline-color-selected;
+            }
+        }
+    }
+    
+    &:hover,
+    &.showed-meditor-toolbar {
+        > .meditor-toolbar {
+            display: block;
+        }
+    }
+}
+
+.meditor-container-content {
+    position: relative;
+    
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: " ";
+        display: block;
+        border: 0px dashed @container-content-outline-color;
+    }
+}
+
+.meditor-container-content-inner {
+    min-height: 70px !important;
+}

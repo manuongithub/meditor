@@ -1,0 +1,45 @@
+// Import
+// -------------------------------------------------
+@import "_mixins";
+@import "_variables";
+
+// CKEditor
+// -------------------------------------------------
+div.cke_float[id*="cke_keditor-ui-"] {
+    padding: 0;
+    margin-top: -@component-outline-with;
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: -@component-outline-with;
+    }
+    
+    .cke_top {
+        padding: 3px;
+    
+        @media screen and (min-width: 1024px) {
+            padding: 5px 1px 0 6px;
+        }
+    }
+    
+    .cke_toolbox {
+        display: block !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+    
+    .cke_toolbar {
+        float: none !important;
+        display: inline-block !important;
+        vertical-align: top !important;
+    }
+    
+    .cke_toolbar_break {
+        display: none !important;
+    }
+}
+
+.cke_screen_reader_only {
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

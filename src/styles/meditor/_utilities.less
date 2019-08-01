@@ -1,0 +1,89 @@
+// Import
+// -------------------------------------------------
+@import "../_mixins";
+@import "../_variables";
+
+
+// Hidden UI
+// -------------------------------------------------
+.meditor-ui-hidden {
+    display: none !important;
+}
+
+
+// Dragging UI
+// -------------------------------------------------
+.meditor-ui-dragging {
+    display: block !important;
+    opacity: 0.2 !important;
+    
+    .meditor-toolbar {
+        display: none !important;
+    }
+}
+
+
+// jQuery UI
+// -------------------------------------------------
+.ui-sortable-placeholder {
+    &.meditor-snippet,
+    &.meditor-container,
+    &.meditor-component {
+        background: @blueLight !important;
+        visibility: visible !important;
+        height: 30px !important;
+        margin: 5px 0 !important;
+        float: none !important;
+        outline: none !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        border: 2px solid @blue;
+
+        &:before,
+        &:after {
+            display: none !important;
+        }
+    }
+}
+
+.ui-sortable-helper {
+    &.meditor-section {
+        background: @snippet-bg !important;
+    }
+    
+    &.meditor-container {
+        .meditor-toolbar.meditor-toolbar-container {
+            display: block !important;
+            
+            > a {
+                display: none;
+                
+                &.btn-container-move {
+                    display: block;
+                }
+            }
+        }
+        
+        .meditor-toolbar-bottom {
+            display: none !important;
+        }
+    }
+    
+    &.meditor-component {
+        .meditor-toolbar {
+            display: block !important;
+            
+            > a {
+                display: none;
+                
+                &.btn-component-move {
+                    display: block;
+                }
+            }
+        }
+        
+        .meditor-toolbar-bottom {
+            display: none !important;
+        }
+    }
+}
