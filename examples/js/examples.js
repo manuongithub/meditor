@@ -42,6 +42,8 @@
 
             var footer = `</body></html>`;
             var body = $('#content-area').meditor('getContent').replace(/<\/?section[^>]*>/g,"");
+            body = body.replace(/data-template-container=""/g,"")
+            body = body.replace(/data-type="container-content"/g,"");
 
 
             modal.find('.content-html').html(
