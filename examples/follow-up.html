@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>MEditor</title>
+      <link rel="stylesheet" type="text/css" href="./plugins/bootstrap-3.4.1/css/bootstrap.min.css" data-type="meditor-style" />
+      <link rel="stylesheet" type="text/css" href="./plugins/font-awesome-4.7.0/css/font-awesome.min.css" data-type="meditor-style" />
+      <link rel="stylesheet" type="text/css" href="./plugins/spectrum/spectrum.css" data-type="meditor-style" />
+      <!-- Start of MEditor styles -->
+      <link rel="stylesheet" type="text/css" href="../dist/css/meditor.css" data-type="meditor-style" />
+      <link rel="stylesheet" type="text/css" href="../dist/css/meditor-components.css" data-type="meditor-style" />
+      <!-- End of MEditor styles -->
+      <link rel="stylesheet" type="text/css" href="./plugins/code-prettify/src/prettify.css" />
+      <link rel="stylesheet" type="text/css" href="./css/examples.css" />
+
+      <link rel="stylesheet" href="./plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+
+
+          <style type="text/css">
+                        p{
+                            margin:10px 0;
+                            padding:0;
+                        }
+                        table{
+                            border-collapse:collapse;
+                        }
+                        h1,h2,h3,h4,h5,h6{
+                            display:block;
+                            margin:0;
+                            padding:0;
+                        }
+                        img,a img{
+                            border:0;
+                            height:auto;
+                            outline:none;
+                            text-decoration:none;
+                        }
+                        body,#bodyTable,#bodyCell{
+                            height:100%;
+                            margin:0;
+                            padding:0;
+                            width:100%;
+                        }
+                        .mcnPreviewText{
+                            display:none !important;
+                        }
+                        #outlook a{
+                            padding:0;
+                        }
+                        img{
+                            -ms-interpolation-mode:bicubic;
+                        }
+                        table{
+                            mso-table-lspace:0pt;
+                            mso-table-rspace:0pt;
+                        }
+                        .ReadMsgBody{
+                            width:100%;
+                        }
+                        .ExternalClass{
+                            width:100%;
+                        }
+                        p,a,li,td,blockquote{
+                            mso-line-height-rule:exactly;
+                        }
+                        a[href^=tel],a[href^=sms]{
+                            color:inherit;
+                            cursor:default;
+                            text-decoration:none;
+                        }
+                        p,a,li,td,body,table,blockquote{
+                            -ms-text-size-adjust:100%;
+                            -webkit-text-size-adjust:100%;
+                        }
+                        .ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.ExternalClass span,.ExternalClass font{
+                            line-height:100%;
+                        }
+                        a[x-apple-data-detectors]{
+                            color:inherit !important;
+                            text-decoration:none !important;
+                            font-size:inherit !important;
+                            font-family:inherit !important;
+                            font-weight:inherit !important;
+                            line-height:inherit !important;
+                        }
+                        #bodyCell{
+                            padding:10px;
+                        }
+                        .templateContainer{
+                            max-width:600px !important;
+                        }
+                        a.mcnButton{
+                            display:block;
+                        }
+                        .mcnImage,.mcnRetinaImage{
+                            vertical-align:bottom;
+                        }
+                        .mcnTextContent{
+                            word-break:break-word;
+                        }
+                        .mcnTextContent img{
+                            height:auto !important;
+                        }
+                        .mcnDividerBlock{
+                            table-layout:fixed !important;
+                        }
+                        body,#bodyTable{
+                            background-color:#FAFAFA;
+                        }
+                        #bodyCell{
+                            border-top:0;
+                        }
+                        .templateContainer{
+                            border:0;
+                        }
+                        h1{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:26px;
+                            font-style:normal;
+                            font-weight:bold;
+                            line-height:125%;
+                            letter-spacing:normal;
+                            text-align:left;
+                        }
+                        h2{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:22px;
+                            font-style:normal;
+                            font-weight:bold;
+                            line-height:125%;
+                            letter-spacing:normal;
+                            text-align:left;
+                        }
+                        h3{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:20px;
+                            font-style:normal;
+                            font-weight:bold;
+                            line-height:125%;
+                            letter-spacing:normal;
+                            text-align:left;
+                        }
+                        h4{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:18px;
+                            font-style:normal;
+                            font-weight:bold;
+                            line-height:125%;
+                            letter-spacing:normal;
+                            text-align:left;
+                        }
+                        #templatePreheader{
+                            background-color:#FAFAFA;
+                            background-image:none;
+                            background-repeat:no-repeat;
+                            background-position:center;
+                            background-size:cover;
+                            border-top:0;
+                            border-bottom:0;
+                            padding-top:9px;
+                            padding-bottom:9px;
+                        }
+                        #templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+                            color:#656565;
+                            font-family:Helvetica;
+                            font-size:12px;
+                            line-height:150%;
+                            text-align:left;
+                        }
+                        #templatePreheader .mcnTextContent a,#templatePreheader .mcnTextContent p a{
+                            color:#656565;
+                            font-weight:normal;
+                            text-decoration:underline;
+                        }
+                        [data-type~="email-template-header"]
+                        {
+                            background-color:#ffffff;
+                            background-image:none;
+                            background-repeat:no-repeat;
+                            background-position:center;
+                            background-size:cover;
+                            border-top:0;
+                            border-bottom:0;
+                            padding-top:9px;
+                            padding-bottom:0;
+                        }
+                        [data-type~="email-template-header"] .mcnTextContent p{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:16px;
+                            line-height:150%;
+                            text-align:left;
+                        }
+                        [data-type~="email-template-header"] .mcnTextContent,[data-type~="email-template-header"] .mcnTextContent p a{
+                            color:#007C89;
+                            font-weight:normal;
+                            text-decoration:underline;
+                        }
+                        [data-type~="email-template-body"] {
+                            background-color:#FFFFFF;
+                            background-image:none;
+                            background-repeat:no-repeat;
+                            background-position:center;
+                            background-size:cover;
+                            border-top:0;
+                            border-bottom:2px solid #EAEAEA;
+                            padding-top:0;
+                            padding-bottom:9px;
+                        }
+                        [data-type~="email-template-body"] > td .mcnTextContent,[data-type~="email-template-body"] .mcnTextContent p{
+                            color:#202020;
+                            font-family:Helvetica;
+                            font-size:16px;
+                            line-height:150%;
+                            text-align:left;
+                        }
+                        [data-type~="email-template-body"] > td .mcnTextContent,[data-type~="email-template-body"] .mcnTextContent p a{
+                            color:#007C89;
+                            font-weight:normal;
+                            text-decoration:underline;
+                        }
+                        [data-type~="email-template-footer"] {
+                            background-color:#FAFAFA;
+                            background-image:none;
+                            background-repeat:no-repeat;
+                            background-position:center;
+                            background-size:cover;
+                            border-top:0;
+                            border-bottom:0;
+                            padding-top:9px;
+                            padding-bottom:9px;
+                        }
+                        [data-type~="email-template-footer"] .mcnTextContent,[data-type~="email-template-footer"] .mcnTextContent p{
+                            color:#656565;
+                            font-family:Helvetica;
+                            font-size:12px;
+                            line-height:150%;
+                            text-align:center;
+                        }
+                        [data-type~="email-template-footer"] .mcnTextContent,[data-type~="email-template-footer"]  .mcnTextContent p a{
+                            color:#656565;
+                            font-weight:normal;
+                            text-decoration:underline;
+                        }
+                    @media only screen and (min-width:768px){
+                        .templateContainer{
+                            width:600px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        body,table,td,p,a,li,blockquote{
+                            -webkit-text-size-adjust:none !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        body{
+                            width:100% !important;
+                            min-width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        #bodyCell{
+                            padding-top:10px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnRetinaImage{
+                            max-width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImage{
+                            width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCaptionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCardRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImageCardRightImageContentContainer{
+                            max-width:100% !important;
+                            width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnBoxedTextContentContainer{
+                            min-width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageGroupContent{
+                            padding:9px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .mcnTextContent{
+                            padding-top:9px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent{
+                            padding-top:18px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageCardBottomImageContent{
+                            padding-bottom:9px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageGroupBlockInner{
+                            padding-top:0 !important;
+                            padding-bottom:0 !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageGroupBlockOuter{
+                            padding-top:9px !important;
+                            padding-bottom:9px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnTextContent,.mcnBoxedTextContentColumn{
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+                            padding-right:18px !important;
+                            padding-bottom:0 !important;
+                            padding-left:18px !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcpreview-image-uploader{
+                            display:none !important;
+                            width:100% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        h1{
+                            font-size:22px !important;
+                            line-height:125% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        h2{
+                            font-size:20px !important;
+                            line-height:125% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        h3{
+                            font-size:18px !important;
+                            line-height:125% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        h4{
+                            font-size:16px !important;
+                            line-height:150% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        .mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
+                            font-size:14px !important;
+                            line-height:150% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        #templatePreheader{
+                            display:block !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        #templatePreheader .mcnTextContent,#templatePreheader .mcnTextContent p{
+                            font-size:14px !important;
+                            line-height:150% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        table#email-template > tbody > tr:nth-child(1) > td .mcnTextContent,table#email-template > tbody > tr:nth-child(1) > td .mcnTextContent p{
+                            font-size:16px !important;
+                            line-height:150% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        table#email-template > tbody > tr:nth-child(2) > td .mcnTextContent,table#email-template > tbody > tr:nth-child(2) > td .mcnTextContent p{
+                            font-size:16px !important;
+                            line-height:150% !important;
+                        }
+
+                }   @media only screen and (max-width: 480px){
+                        table#email-template > tbody > tr:nth-child(3) > td .mcnTextContent,table#email-template > tbody > tr:nth-child(3) > td .mcnTextContent p{
+                            font-size:14px !important;
+                            line-height:150% !important;
+                        }
+
+                }
+    </style>
+
+
+   </head>
+   <body>
+      <div data-meditor="html">
+         <div id="content-area">
+            <section>
+               <center>
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                       <tbody>
+                          <tr>
+                             <td align="center" valign="top" id="templateHeader" data-template-container="" style="background:#F7F7F7 none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #F7F7F7;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 45px;padding-bottom: 45px;">
+                                <!--[if (gte mso 9)|(IE)]>
+                                <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                   <tr>
+                                      <td align="center" valign="top" width="600" style="width:600px;">
+                                         <![endif]-->
+                                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 600px !important;">
+                                            <tbody>
+                                               <tr>
+                                                  <td data-type="container-content" valign="top" class="headerContainer" style="background:transparent none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: transparent;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                                                     
+                                                  </td>
+                                               </tr>
+                                            </tbody>
+                                         </table>
+                                         <!--[if (gte mso 9)|(IE)]>
+                                      </td>
+                                   </tr>
+                                </table>
+                                <![endif]-->
+                             </td>
+                          </tr>
+                          <tr>
+                             <td align="center" valign="top" id="templateBody" data-template-container="" style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 36px;padding-bottom: 45px;">
+                                
+                                <!--[if (gte mso 9)|(IE)]>
+                                <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                   <tr>
+                                      <td align="center" valign="top" width="600" style="width:600px;">
+                                         <![endif]-->
+                                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 600px !important;">
+                                            <tbody>
+                                               <tr>
+                                                  <td data-type="container-content" valign="top" class="bodyContainer" style="background:transparent none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: transparent;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;">
+
+                                                    <!-- follow up email header -->
+                                                    <section data-type="component-text">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        <tbody class="mcnTextBlockOuter">
+                                                           <tr>
+                                                              <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                 <!--[if mso]>
+                                                                 <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                                    <tr>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                       <td valign="top" width="600" style="width:600px;">
+                                                                          <![endif]-->
+                                                                          <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                                                                             <tbody>
+                                                                                <tr>
+                                                                                   <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #757575;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                                                      <h1 style="display: block;margin: 0;padding: 0;color: #222222;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 150%;letter-spacing: normal;text-align: center;">Send a tailored follow-up email.</h1>
+                                                                                   </td>
+                                                                                </tr>
+                                                                             </tbody>
+                                                                          </table>
+                                                                          <!--[if mso]>
+                                                                       </td>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                    </tr>
+                                                                 </table>
+                                                                 <![endif]-->
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+                                                     </table>
+                                                    </section>
+
+
+                                                     <section data-type="component-photo">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        <tbody class="mcnImageBlockOuter">
+                                                           <tr>
+                                                              <td valign="top" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnImageBlockInner">
+                                                                 <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                    <tbody>
+                                                                       <tr>
+                                                                          <td class="mcnImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                             <img align="center" alt="" src="https://via.placeholder.com/564x212" width="564" style="max-width: 564px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
+                                                                          </td>
+                                                                       </tr>
+                                                                    </tbody>
+                                                                 </table>
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+                                                     </table>
+                                                    </section>
+                                                    <section data-type="component-text">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        
+                                                        <tbody class="mcnTextBlockOuter">
+                                                           <tr>
+                                                              <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                 
+                                                                 <!--[if mso]>
+                                                                 <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                                    <tr>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                       <td valign="top" width="600" style="width:600px;">
+                                                                          <![endif]-->
+                                                                          <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                                                                             <tbody>
+                                                                                <tr>
+                                                                                   <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                        
+                                                                                        <p>Keep people involved by following up with a personal message or discount code. Start by replacing the full-width header with a different color or a high-res image.</p><p><strong>If you sell things,</strong> welcome new customers after a purchase, let lapsed customers know you miss them, or offer a deal to your best customers. If you've connected your store, try adding product or product recommendation blocks, too.</p><p><strong>If you don't sell things,</strong> welcome new subscribers to your list, thank people for attending an event, and let inactive subscribers know you miss them.</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                             </tbody>
+                                                                          </table>
+                                                                          <!--[if mso]>
+                                                                       </td>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                    </tr>
+                                                                 </table>
+                                                                 <![endif]-->
+                                                                
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+
+                                                     </table>
+                                                     </section>
+                                                     <section data-type="component-email-button">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        <tbody class="mcnButtonBlockOuter">
+                                                           <tr>
+                                                              <td style="padding-top: 0;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top" align="center" class="mcnButtonBlockInner">
+                                                                 <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 3px;background-color: #009FC7;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; border-radius: 5px;">
+                                                                    <tbody>
+                                                                       <tr>
+                                                                          <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Helvetica;font-size: 18px;padding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                             <a class="mcnButton " title="Start Shopping" href="#" target="_blank" style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Shop Now</a>
+                                                                          </td>
+                                                                       </tr>
+                                                                    </tbody>
+                                                                 </table>
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+                                                     </table>
+                                                    </section>
+                                                    
+                                                    <!-- Share what's new --> 
+                                                    <section data-type="component-text">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        
+                                                        <tbody class="mcnTextBlockOuter">
+                                                           <tr>
+                                                              <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                 
+                                                                 <!--[if mso]>
+                                                                 <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                                    <tr>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                       <td valign="top" width="600" style="width:600px;">
+                                                                          <![endif]-->
+                                                                          <table border="0" cellspacing="0" class="mcnTextContentContainer" width="100%" style="min-width: 100% !important; background-color: rgb(247, 247, 247);">
+                                                                             <tbody>
+                                                                                <tr>
+                                                                                   <td valign="top" class="mcnTextContent" style="padding: 18px; color: rgb(112, 112, 112); font-family: Helvetica; font-size: 16px; line-height: 200%; text-align: center;">
+                                                                                        <h3>Share what's new</h3>Let people know what you've been up to or what they might have missed.
+                                                                                    </td>
+                                                                                </tr>
+                                                                             </tbody>
+                                                                          </table>
+                                                                          <!--[if mso]>
+                                                                       </td>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                    </tr>
+                                                                 </table>
+                                                                 <![endif]-->
+                                                                
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+
+                                                     </table>
+                                                     </section>
+                                                     
+                                                  </td>
+                                               </tr>
+                                            </tbody>
+                                         </table>
+                                         <!--[if (gte mso 9)|(IE)]>
+                                      </td>
+                                   </tr>
+                                </table>
+                                <![endif]-->
+                             </td>
+                          </tr>
+                          <tr>
+                             <td align="center" valign="top" id="templateFooter" data-template-container="" style="background:#333333 none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #333333;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 45px;padding-bottom: 63px;">
+                                <!--[if (gte mso 9)|(IE)]>
+                                <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                   <tr>
+                                      <td align="center" valign="top" width="600" style="width:600px;">
+                                         <![endif]-->
+                                         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-width: 600px !important;">
+                                            <tbody>
+                                               <tr>
+                                                  <td data-type="container-content" valign="top" class="footerContainer" style="background:transparent none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: transparent;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;">
+                                                     <section data-type="component-text">
+                                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                        <tbody class="mcnTextBlockOuter">
+                                                           <tr>
+                                                              <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                 <!--[if mso]>
+                                                                 <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                                    <tr>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                       <td valign="top" width="600" style="width:600px;">
+                                                                          <![endif]-->
+                                                                          <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
+                                                                             <tbody>
+                                                                                <tr>
+                                                                                   <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #FFFFFF;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: center;">
+                                                                                      <em>Copyright © 2019 Manu.ws, All rights reserved.</em>
+                                                                                      <br>
+                                                                                      <strong>Our mailing address is:</strong>
+                                                                                      <br>
+                                                                                      Union City, California
+                                                                                      <br>
+                                                                                      <br>
+                                                                                      Want to change how you receive these emails?<br>
+                                                                                      You can <a href="">unsubscribe from this list</a>.
+                                                                                   </td>
+                                                                                </tr>
+                                                                             </tbody>
+                                                                          </table>
+                                                                          <!--[if mso]>
+                                                                       </td>
+                                                                       <![endif]-->
+                                                                       <!--[if mso]>
+                                                                    </tr>
+                                                                 </table>
+                                                                 <![endif]-->
+                                                              </td>
+                                                           </tr>
+                                                        </tbody>
+                                                     </table>
+                                                     </section>
+                                                  </td>
+                                               </tr>
+                                            </tbody>
+                                         </table>
+                                         <!--[if (gte mso 9)|(IE)]>
+                                      </td>
+                                   </tr>
+                                </table>
+                                <![endif]-->
+                             </td>
+                          </tr>
+                       </tbody>
+                    </table>
+               </center>
+            </section>
+         </div>
+      </div>
+      <script type="text/javascript" src="./plugins/jquery-1.11.3/jquery-1.11.3.min.js"></script>
+      <script type="text/javascript" src="./plugins/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="./plugins/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+      <script type="text/html" src="./plugins/ckeditor-4.11.4/ckeditor.js" data-type="ckeditor-script"></script>
+      <script type="text/javascript" src="./plugins/formBuilder-2.5.3/form-builder.min.js"></script>
+      <script type="text/javascript" src="./plugins/formBuilder-2.5.3/form-render.min.js"></script>
+      <script type="text/javascript" src="./plugins/spectrum/spectrum.js"></script>
+      <!-- Start of MEditor scripts -->
+      <script type="text/javascript" src="../dist/js/meditor.js"></script>
+      <script type="text/javascript" src="../dist/js/meditor-components.js"></script>
+      <!-- End of MEditor scripts -->
+      <script type="text/javascript" src="./plugins/code-prettify/src/prettify.js"></script>
+      <script type="text/javascript" src="./plugins/js-beautify-1.7.5/js/lib/beautify.js"></script>
+      <script type="text/javascript" src="./plugins/js-beautify-1.7.5/js/lib/beautify-html.js"></script>
+      <script type="text/javascript" src="./js/examples.js"></script>
+      <script type="text/javascript" data-meditor="script">
+            $(function () {
+                $('#content-area').meditor({
+                    containerSettingEnabled: true,
+                    containerSettingInitFunction: function (form, meditor) {
+                        // Add control for settings form
+                        form.append(
+                            '<div class="form-horizontal">' +
+                            '   <div class="form-group">' +
+                            '       <div class="col-sm-12">' +
+                            '           <label>Header Background color</label>' +
+                            '           <input type="text" id="background-header-colorpicker" class="form-control header-txt-bg-color" />' +
+                            '       </div>' +
+                            '   </div>' +
+                            '   <div class="form-group">' +
+                            '       <div class="col-sm-12">' +
+                            '           <label>Body Background color</label>' +
+                            '           <input type="text" id="background-body-colorpicker" class="form-control body-txt-bg-color" />' +
+                            '       </div>' +
+                            '   </div>' +
+                            '   <div class="form-group">' +
+                            '       <div class="col-sm-12">' +
+                            '           <label>Footer Background color</label>' +
+                            '           <input type="text" id="background-footer-colorpicker" class="form-control footer-txt-bg-color" />' +
+                            '       </div>' +
+                            '   </div>' +
+                            '</div>'
+                        );
+
+                        $("#background-header-colorpicker").spectrum({
+                            color: "#f00",
+                            showInput: true,
+                            preferredFormat: "hex"
+                        });
+
+                        $("#background-body-colorpicker").spectrum({
+                            color: "#f00",
+                            showInput: true,
+                            preferredFormat: "hex"
+                        });
+
+                        $("#background-footer-colorpicker").spectrum({
+                            color: "#f00",
+                            showInput: true,
+                            preferredFormat: "hex"
+                        });
+                        
+                        form.find('.header-txt-bg-color').on('change', function () {
+                            var container = meditor.getSettingContainer();
+                            var templateHeader = container.find('#templateHeader');
+                            templateHeader.css('background-color', "#"+$("#background-header-colorpicker").spectrum("get").toHex());
+                        });
+                        form.find('.footer-txt-bg-color').on('change', function () {
+                            var container = meditor.getSettingContainer();
+                            var templateFooter = container.find('#templateFooter');
+                            templateFooter.css('background-color', "#"+$("#background-footer-colorpicker").spectrum("get").toHex());
+                        });
+                        form.find('.body-txt-bg-color').on('change', function () {
+                            var container = meditor.getSettingContainer();
+                            var templateBody = container.find('#templateBody');
+                            templateBody.css('background-color', "#"+$("#background-body-colorpicker").spectrum("get").toHex());
+                        });
+                    },
+                    containerSettingShowFunction: function (form, container, meditor) {
+                        var templateHeader = container.find('#templateHeader');
+                        var templateBody = container.find('#templateBody');
+                        var templateFooter = container.find('#templateFooter');
+
+                         
+                        var headerBackgroundColor = templateHeader.prop('style').backgroundColor || '';
+                        var bodyBackgroundColor = templateBody.prop('style').backgroundColor || '';
+                        var footerBackgroundColor = templateFooter.prop('style').backgroundColor || '';
+
+                        $("#background-header-colorpicker").spectrum("set", headerBackgroundColor);
+                        $("#background-body-colorpicker").spectrum("set", bodyBackgroundColor);
+                        $("#background-footer-colorpicker").spectrum("set", footerBackgroundColor);
+                    },
+                    containerSettingHideFunction: function (form, meditor) {
+
+                    }
+                });
+            });
+        </script>
+   </body>
+</html>
