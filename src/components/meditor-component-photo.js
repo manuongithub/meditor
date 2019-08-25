@@ -26,6 +26,17 @@ MEditor.components['photo'] = {
             '       </div>' +
             '   </div>' +
             '   <div class="form-group">' +
+            '       <div class="col-sm-12">' +
+            '           <center><b>OR</b></center>' +
+            '       </div>' +
+            '   </div>' +
+            '   <div class="form-group">' +
+            '       <label for="photo-width" class="col-sm-12">URL</label>' +
+            '       <div class="col-sm-12">' +
+            '           <input type="text" id="photo-url" class="form-control" />' +
+            '       </div>' +
+            '   </div>' +
+            '   <div class="form-group">' +
             '       <label for="photo-align" class="col-sm-12">Align</label>' +
             '       <div class="col-sm-12">' +
             '           <select id="photo-align" class="form-control">' +
@@ -44,12 +55,6 @@ MEditor.components['photo'] = {
             '               <option value="img-circle">Circle</option>' +
             '               <option value="img-thumbnail">Thumbnail</option>' +
             '           </select>' +
-            '       </div>' +
-            '   </div>' +
-            '   <div class="form-group">' +
-            '       <label for="photo-responsive" class="col-sm-12">Responsive</label>' +
-            '       <div class="col-sm-12">' +
-            '           <input type="checkbox" id="photo-responsive" />' +
             '       </div>' +
             '   </div>' +
             '   <div class="form-group">' +
@@ -103,11 +108,6 @@ MEditor.components['photo'] = {
             panel.css('text-align', this.value);
         });
         
-        let inputResponsive = form.find('#photo-responsive');
-        inputResponsive.on('click', function () {
-            meditor.getSettingComponent().find('img')[this.checked ? 'addClass' : 'removeClass']('img-responsive');
-        });
-        
         let cbbStyle = form.find('#photo-style');
         cbbStyle.on('change', function () {
             let img = meditor.getSettingComponent().find('img');
@@ -117,6 +117,12 @@ MEditor.components['photo'] = {
             if (val) {
                 img.addClass(val);
             }
+        });
+
+        let inputUrl = form.find('#photo-url');
+        inputUrl.on('change', function () {
+            let img = meditor.getSettingComponent().find('img');
+            img.attr('src', this.value);
         });
         
         let inputWidth = form.find('#photo-width');
@@ -160,8 +166,8 @@ MEditor.components['photo'] = {
     showSettingForm: function (form, component, meditor) {
         let self = this;
         let inputAlign = form.find('#photo-align');
-        let inputResponsive = form.find('#photo-responsive');
         let inputWidth = form.find('#photo-width');
+        let inputUrl = form.find('#photo-url');
         let inputHeight = form.find('#photo-height');
         let cbbStyle = form.find('#photo-style');
         
@@ -184,7 +190,6 @@ MEditor.components['photo'] = {
         }
         
         inputAlign.val(algin);
-        inputResponsive.prop('checked', img.hasClass('img-responsive'));
         inputWidth.val(img.width());
         inputHeight.val(img.height());
         
